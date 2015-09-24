@@ -23,4 +23,22 @@
 
 ![image](https://github.com/gpfduoduo/RadarScanView/blob/master/RadarScanView/gif/radar.gif "效果图")
 
+## 添加动态显示效果 
+
+```JAVA
+  new Handler().postDelayed(new Runnable()
+        {
+            @Override
+            public void run()
+            {
+                randomTextView.addKeyWord("彭丽媛");
+                randomTextView.addKeyWord("习近平");
+                randomTextView.show();
+            }
+        }, 2 * 1000);
+```
+
+## 添加动态发现水波效果
+![image](https://github.com/gpfduoduo/RadarScanView/blob/master/RadarScanView/gif/radarscan.gif "效果图")
+
 
