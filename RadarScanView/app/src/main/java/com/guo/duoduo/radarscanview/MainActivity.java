@@ -2,9 +2,12 @@ package com.guo.duoduo.radarscanview;
 
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.guo.duoduo.randomtextview.RandomTextView;
 
 
 public class MainActivity extends AppCompatActivity
@@ -15,6 +18,20 @@ public class MainActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        final RandomTextView randomTextView = (RandomTextView) findViewById(
+            R.id.random_textview);
+
+        new Handler().postDelayed(new Runnable()
+        {
+            @Override
+            public void run()
+            {
+                randomTextView.addKeyWord("彭丽媛");
+                randomTextView.addKeyWord("习近平");
+                randomTextView.show();
+            }
+        }, 2 * 1000);
     }
 
     @Override

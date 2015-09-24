@@ -5,6 +5,8 @@
       <module fileurl="file://$PROJECT_DIR$/RadarScanView.iml" filepath="$PROJECT_DIR$/RadarScanView.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/library/library.iml" filepath="$PROJECT_DIR$/library/library.iml" />
+      <module fileurl="file://$PROJECT_DIR$/randomtextview/randomtextview.iml" filepath="$PROJECT_DIR$/randomtextview/randomtextview.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rippleview/rippleview.iml" filepath="$PROJECT_DIR$/rippleview/rippleview.iml" />
     </modules>
   </component>
 </project>
