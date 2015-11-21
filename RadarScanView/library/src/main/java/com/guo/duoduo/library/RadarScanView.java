@@ -172,7 +172,9 @@ public class RadarScanView extends View
         canvas.drawCircle(centerX, centerY, 3 * radarRadius / 7, mPaintCircle);
 
         //设置颜色渐变从透明到不透明
-        Shader shader = new SweepGradient(centerX, centerY, Color.TRANSPARENT, tailColor);
+        //        Shader shader = new SweepGradient(centerX, centerY, Color.TRANSPARENT, tailColor);
+        Shader shader = new SweepGradient(centerX, centerY, Color.parseColor("#00A8D7A7"),
+            Color.parseColor("#ffA8D7A7"));
         mPaintRadar.setShader(shader);
         canvas.concat(matrix);
         canvas.drawCircle(centerX, centerY, 3 * radarRadius / 7, mPaintRadar);

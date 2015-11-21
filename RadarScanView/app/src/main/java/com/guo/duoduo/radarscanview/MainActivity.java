@@ -1,11 +1,13 @@
 package com.guo.duoduo.radarscanview;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.guo.duoduo.randomtextview.RandomTextView;
 
@@ -21,6 +23,16 @@ public class MainActivity extends AppCompatActivity
 
         final RandomTextView randomTextView = (RandomTextView) findViewById(
             R.id.random_textview);
+        randomTextView.setOnRippleViewClickListener(
+            new RandomTextView.OnRippleViewClickListener()
+            {
+                @Override
+                public void onRippleViewClicked(View view)
+                {
+                    MainActivity.this.startActivity(
+                        new Intent(MainActivity.this, RefreshProgressActivity.class));
+                }
+            });
 
         new Handler().postDelayed(new Runnable()
         {
