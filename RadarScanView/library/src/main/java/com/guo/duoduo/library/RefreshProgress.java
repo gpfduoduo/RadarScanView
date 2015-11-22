@@ -14,15 +14,17 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
 
+import java.util.Map;
+
 
 public class RefreshProgress extends View
 {
     private static final String tag = "RefreshProgress";
 
-    private RectF rectF = new RectF(0, 0, 200, 200);
-    private float startAngle = 0.0f;
-    private int radarRadius;
-    private Paint paint;
+    private RectF mRect = new RectF(0, 0, 200, 200);
+    private float mStartAngle = 0.0f;
+    private int mRadarRadius;
+    private Paint mPaint;
 
     public RefreshProgress(Context context)
     {
@@ -38,10 +40,10 @@ public class RefreshProgress extends View
     {
         super(context, attrs, defStyleAttr);
 
-        paint = new Paint();
-        paint.setAntiAlias(true);
-        paint.setStrokeWidth(8);
-        paint.setStyle(Paint.Style.STROKE); //注释了就是雷达扫描图
+        mPaint = new Paint();
+        mPaint.setAntiAlias(true);
+        mPaint.setStrokeWidth(8);
+        mPaint.setStyle(Paint.Style.STROKE); //注释了就是雷达扫描图
     }
 
     @Override
@@ -51,30 +53,30 @@ public class RefreshProgress extends View
         int width = View.MeasureSpec.getSize(widthMeasureSpec);
         int height = MeasureSpec.getSize(heightMeasureSpec);
 
-        radarRadius = Math.min(width, height);
+        mRadarRadius = Math.min(width, height);
 
         setMeasuredDimension(width, height);
-        rectF.set(17, 17, width - 17, height - 17);
+        mRect.set(17, 17, width - 17, height - 17);
     }
 
     @Override
     protected void onDraw(Canvas canvas)
     {
         super.onDraw(canvas);
-        drawAccProgressbar(startAngle, canvas);
+        drawAccProgressbar(mStartAngle, canvas);
     }
 
     private void drawAccProgressbar(float startAngle, Canvas canvas)
     {
         int[] f = {Color.parseColor("#00A8D7A7"), Color.parseColor("#ffA8D7A7")};
         float[] p = {0.0f, 1.0f};
-        SweepGradient sweepGradient = new SweepGradient(rectF.centerX(), rectF.centerX(),
+        SweepGradient sweepGradient = new SweepGradient(mRect.centerX(), mRect.centerX(),
             f, p);
         Matrix matrix = new Matrix();
-        matrix.postRotate(startAngle, rectF.centerX(), rectF.centerY());
-        paint.setShader(sweepGradient);
+        matrix.postRotate(mStartAngle, mRect.centerX(), mRect.centerY());
+        mPaint.setShader(sweepGradient);
         canvas.concat(matrix);
-        canvas.drawArc(rectF, 0, 360, true, paint);
+        canvas.drawArc(mRect, 0, 360, true, mPaint);
     }
 
     private void startRotate(long duration)
@@ -88,7 +90,7 @@ public class RefreshProgress extends View
             @Override
             public void applyTans(float interpolatedTime)
             {
-                startAngle = 360 * interpolatedTime;
+                mStartAngle = 360 * interpolatedTime;
                 invalidate();
             }
         });
